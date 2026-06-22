@@ -1,7 +1,15 @@
+import dotenv from 'dotenv';
+dotenv.config(); // <- Esta es la línea mágica que lee el archivo .env
+
 import express, { Application } from 'express';
 import cors from 'cors';
 import { connectDatabase } from './config/db';
 import { setupSwagger } from './config/swagger';
+import catalogRoutes from './routes/catalog.routes';
+import supplyRoutes from './routes/supply.routes';
+import checkoutRoutes from './routes/checkout.routes';
+import accessRoutes from './routes/access.routes';
+
 
 class AppServer {
     public app: Application;
@@ -24,6 +32,12 @@ class AppServer {
         this.app.get('/api/v1/health', (req, res) => {
             res.status(200).json({ status: 'Super Store API is up and running' });
         });
+
+        // Conectar todos los módulos del Minimarket
+        this.app.use('/api/v1/catalog', catalogRoutes);
+        this.app.use('/api/v1/supply', supplyRoutes);
+        this.app.use('/api/v1/checkout', checkoutRoutes);
+        this.app.use('/api/v1/access', accessRoutes);
     }
 
     public async start(): Promise<void> {
