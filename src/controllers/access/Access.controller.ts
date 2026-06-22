@@ -37,6 +37,15 @@ export class AccessController {
         }
     };
 
+    public loginUser = async (req: Request, res: Response) => {
+        try {
+            const loginResponse = await this.accessService.loginUser(req.body);
+            res.status(200).json({ success: true, data: loginResponse });
+        } catch (error: any) {
+            res.status(400).json({ success: false, message: error.message });
+        }
+    };
+
     public addUser = async (req: Request, res: Response) => {
         try {
             const newUser = await this.accessService.registerUser(req.body);

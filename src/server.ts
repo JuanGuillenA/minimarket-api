@@ -9,6 +9,9 @@ import catalogRoutes from './routes/catalog.routes';
 import supplyRoutes from './routes/supply.routes';
 import checkoutRoutes from './routes/checkout.routes';
 import accessRoutes from './routes/access.routes';
+import clientsRoutes from './routes/clients.routes';
+import inventoryRoutes from './routes/inventory.routes';
+import reportsRoutes from './routes/reports.routes';
 
 
 class AppServer {
@@ -38,6 +41,9 @@ class AppServer {
         this.app.use('/api/v1/supply', supplyRoutes);
         this.app.use('/api/v1/checkout', checkoutRoutes);
         this.app.use('/api/v1/access', accessRoutes);
+        this.app.use('/api/v1/clients', clientsRoutes);
+        this.app.use('/api/v1/inventory', inventoryRoutes);
+        this.app.use('/api/v1/reports', reportsRoutes);
     }
 
     public async start(): Promise<void> {

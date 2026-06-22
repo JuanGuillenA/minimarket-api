@@ -10,14 +10,14 @@ const checkoutController = new CheckoutController();
  *   get:
  *     summary: Obtener todos los registros de caja
  *     tags:
- *       - Checkout
+ *       - Caja
  *     responses:
  *       200:
  *         description: Lista de registros de caja
  *   post:
  *     summary: Crear un nuevo registro de caja
  *     tags:
- *       - Checkout
+ *       - Caja
  *     requestBody:
  *       required: true
  *       content:
@@ -39,7 +39,7 @@ const checkoutController = new CheckoutController();
  *   post:
  *     summary: Procesar una nueva venta
  *     tags:
- *       - Checkout
+ *       - Caja
  *     requestBody:
  *       required: true
  *       content:
@@ -68,81 +68,13 @@ const checkoutController = new CheckoutController();
  *                     unitPrice:
  *                       type: number
  *                       example: 2.5
- *               discount:
- *                 type: number
- *                 example: 0
- *               clientId:
- *                 type: string
- *                 example: 64a8d1a2f1c2e3b4c5d6e7f8
  *     responses:
  *       201:
  *         description: Transacción procesada correctamente
- *
- * /api/v1/checkout/movements:
- *   post:
- *     summary: Registrar un movimiento de caja
- *     tags:
- *       - Checkout
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               registerId:
- *                 type: string
- *                 example: 64a8d1a2f1c2e3b4c5d6e7f8
- *               type:
- *                 type: string
- *                 enum: [income, expense]
- *                 example: income
- *               amount:
- *                 type: number
- *                 example: 50.0
- *               paymentMethod:
- *                 type: string
- *                 example: cash
- *               userId:
- *                 type: string
- *                 example: 64a8d1a2f1c2e3b4c5d6e7f8
- *               description:
- *                 type: string
- *                 example: Ingreso por venta extra
- *     responses:
- *       201:
- *         description: Movimiento de caja registrado correctamente
- *
- * /api/v1/checkout/close:
- *   post:
- *     summary: Cerrar caja y registrar arqueo
- *     tags:
- *       - Checkout
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               registerId:
- *                 type: string
- *                 example: 64a8d1a2f1c2e3b4c5d6e7f8
- *               countedBalance:
- *                 type: number
- *                 example: 150.0
- *               cashierId:
- *                 type: string
- *                 example: 64a8d1a2f1c2e3b4c5d6e7f8
- *     responses:
- *       200:
- *         description: Caja cerrada correctamente
  */
 
 router.get('/registers', checkoutController.getRegisters);
 router.post('/registers', checkoutController.addRegister);
 router.post('/transactions', checkoutController.processNewSale);
-router.post('/movements', checkoutController.addCashMovement);
-router.post('/close', checkoutController.closeRegister);
 
 export default router;

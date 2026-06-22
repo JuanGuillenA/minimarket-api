@@ -69,6 +69,28 @@ const accessController = new AccessController();
  *     responses:
  *       201:
  *         description: Usuario guardado en la base de datos
+ *
+ * /api/v1/access/login:
+ *   post:
+ *     summary: Autenticar un usuario y obtener token JWT
+ *     tags:
+ *       - Accesos
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: juan123
+ *               password:
+ *                 type: string
+ *                 example: MiClave123
+ *     responses:
+ *       200:
+ *         description: Token de autenticación generado correctamente
  */
 
 // Rutas de Roles
@@ -78,5 +100,6 @@ router.post('/roles', accessController.addRole);
 // Rutas de Usuarios
 router.get('/users', accessController.getUsers);
 router.post('/users', accessController.addUser);
+router.post('/login', accessController.loginUser);
 
 export default router;

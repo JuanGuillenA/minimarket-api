@@ -17,6 +17,10 @@ export class AccessRepository {
         return await User.find({}).populate('roleId', 'roleName description');
     }
 
+    async fetchUserByUsername(username: string) {
+        return await User.findOne({ username }).populate('roleId', 'roleName description');
+    }
+
     async saveUser(userData: any) {
         const newUser = new User(userData);
         return await newUser.save();
