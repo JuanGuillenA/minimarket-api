@@ -1,5 +1,23 @@
 # Minimarket API 
 
+## Frontend React
+
+El repositorio incluye la aplicación web en la carpeta `frontend/`. Esta
+interfaz consume los servicios de la API y permite trabajar con punto de venta,
+catálogo, inventario, abastecimiento, clientes, usuarios, cajas y reportes.
+
+Para iniciar el frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+La aplicación se abre en `http://localhost:3000` y utiliza por defecto
+`http://localhost:5001/api/v1` como URL del backend. La dirección puede
+modificarse con `NEXT_PUBLIC_API_URL` en `frontend/.env.local`.
+
 **Universidad Politécnica Salesiana - Sede Cuenca**  
 **Carrera:** Ingeniería en Ciencias de la Computación   
 **Proyecto:** API REST para gestión de Minimarket
@@ -88,7 +106,7 @@ npm install
 
 ```env
 PORT=5001
-MONGO_URI=mongodb://localhost:27017/minimarket
+DATABASE_URL=mongodb://localhost:27017/minimarket
 JWT_SECRET=secret
 ```
 

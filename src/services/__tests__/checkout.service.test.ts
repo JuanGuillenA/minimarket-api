@@ -33,8 +33,7 @@ describe('Checkout Service', () => {
  discount: 2 // Total Amount: 8
  };
  // Simulamos que el artículo existe en el inventario y tiene suficiente stock
- mockInventoryRepo.findArticleByBarcode.mockResolvedValue({ _id: 'art_id', stockLevel: 10 }
-as any);
+ mockInventoryRepo.findArticleByBarcode.mockResolvedValue({ _id: 'art_id', stockLevel: 10 } as any);
  mockInventoryRepo.updateArticleStock.mockResolvedValue(true as any);
  mockInventoryRepo.saveInventoryMovement.mockResolvedValue(true as any);
  
